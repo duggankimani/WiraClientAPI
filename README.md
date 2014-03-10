@@ -1,0 +1,1 @@
+mvn install:install-file -Dfile=../libs/jbpmht_rest_models.jar -DgroupId=com.duggan.workflow.server.rest.model -DartifactId=WiraModels -Dversion=0.9-88 -Dpackaging=jar -DlocalRepositoryPath=libs -DcreateChecksum=true

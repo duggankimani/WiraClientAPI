@@ -39,7 +39,6 @@ public class TestWiraClient {
 		context.put("docType", "INVOICE"); //mandatory
 		context.put("ownerId", ownerId); //mandatory - username of logged in user/ or document creator
 		context.put("docDate", new Date()); //mandatory - defaults to now() if not provided
-		
 		context.put("subject", null);
 		context.put("supplier", "ABC Suppliers");
 		context.put("description", "Example Invoice- A1 Integration");

@@ -1,6 +1,7 @@
 package com.wira.client.rest.test;
 
 import java.io.StringWriter;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
@@ -24,10 +25,17 @@ import com.wira.client.rest.jaxb.JAXBProviderImpl;
 
 public class TestWiraClient {
 
+	/**
+	 * This test submits an Invoice Approval request
+	 * to WIRA server using a RESTFul Interface
+	 * 
+	 * @param args
+	 */
 	public static void main(String[] args) {
 
+		String serviceUrl = "http://ec2-54-196-121-246.compute-1.amazonaws.com/ebusiness/rest/request/approval";
 		//String serviceUrl = "http://localhost:8080/ebusiness/rest/request/approval";
-		String serviceUrl = "http://localhost:8888/rest/request/approval";
+		//String serviceUrl = "http://localhost:8888/rest/request/approval";
 		String ownerId="Administrator";
 		
 		WiraClientImpl impl = new WiraClientImpl();
@@ -44,15 +52,31 @@ public class TestWiraClient {
 		context.put("description", "Example Invoice- A1 Integration");
 		request.setContext(context);
 		
+		//Lines are created here
 		List<Detail> details = new ArrayList<>();
 		double grandTotal=0.0;
-		for(int i=0; i<4; i++){
+		DecimalFormat df = new DecimalFormat("#.##");      
+		for(int i=0; i<5; i++){
 			Map<String,Object> line = new HashMap<>();
 			line.put("description", "Item#"+i);
-			line.put("qty", new Random().nextInt(10));
-			line.put("unitPrice", new Random().nextFloat()*999.50);
+			
+			int qty = new Random().nextInt(10);
+			if(qty==0){
+				continue;
+			}
+			line.put("qty", qty);
+			
+			double unitPrice =new Random().nextFloat()*999.50;
+			if(unitPrice==0.0){
+				continue;
+			}
+			unitPrice = Double.valueOf(df.format(unitPrice));
+			line.put("unitPrice", unitPrice);
+			
 			Double total = ((Number)((Integer)line.get("qty")* (Double)line.get("unitPrice"))).doubleValue();
+			total= Double.valueOf(df.format(total)); 
 			line.put("total",total );
+			
 			grandTotal = grandTotal+total;
 			
 			Detail detail = new Detail();
@@ -60,6 +84,7 @@ public class TestWiraClient {
 			detail.setName("lines");
 			details.add(detail);
 		}
+		grandTotal = Double.valueOf(df.format(grandTotal));
 		context.put("value", grandTotal);
 		
 		request.setDetails(details);
@@ -71,10 +96,14 @@ public class TestWiraClient {
 		Response response = impl.sendRequest(request);
 		assert response!=null;
 		
+		System.err.println("DocumentId = "+response.getBusinessKey().getDocumentId());
+		System.err.println("JBPM SessionId = "+response.getBusinessKey().getSessionId());
+		System.err.println("JBPM ProcessInstanceId = "+response.getBusinessKey().getProcessInstanceId());
 //		outputJson(request);
 		
 	}
 
+	//Test JSON Output
 	private static void outputJson(Request request) {
 
 		StringWriter writer = new StringWriter();

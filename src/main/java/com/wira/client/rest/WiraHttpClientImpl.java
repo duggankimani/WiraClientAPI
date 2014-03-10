@@ -93,17 +93,21 @@ public class WiraHttpClientImpl {
 			throw new RuntimeException(e);
 		}
 
-		if (!clientResponse.getClientResponseStatus().equals(
+		if (clientResponse.getClientResponseStatus().equals(
 				ClientResponse.Status.OK)) {
-
-			WiraExceptionModel model = clientResponse.getEntity(WiraExceptionModel.class);
 			
-			throw new RuntimeException(model.getCause());
+			Response response = clientResponse.getEntity(Response.class);
+			
+			return response;
+		}else if(clientResponse.getClientResponseStatus().equals(
+				ClientResponse.Status.INTERNAL_SERVER_ERROR)) {
+			WiraExceptionModel model = clientResponse.getEntity(WiraExceptionModel.class);
+			throw new RuntimeException(model.getCause());		
+		}else{
+			throw new RuntimeException(clientResponse.getEntity(String.class));
 		}
 
-		Response response = clientResponse.getEntity(Response.class);
 		
-		return response;
 	}
 
 

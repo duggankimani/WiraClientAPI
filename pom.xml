@@ -88,23 +88,6 @@
           
       </exclusions>
     </dependency>
-
-    <!-- mvn install:install-file -Dfile=/Users/brett/Development/Projects/Platinum5/Platinum-5/war/WEB-INF/lib/HicOnline-6.0-3.jar -DartifactId="HicOnline" 
-      -Dversion="6.0-3" -Dpackaging="jar" -DgroupId="au.gov.hic.hiconline" -->
-    <dependency>
-      <groupId>au.gov.hic.hiconline</groupId>
-      <artifactId>HicOnline</artifactId>
-      <version>6.0-3</version>
-    </dependency>
-
-    <!-- mvn install:install-file -Dfile=/home/duggan/Projects/Platinum5/Platinum-5/war/WEB-INF/lib/au.gov.hic.psi.crypto.jar 
-    -DartifactId="hic-crypto" -Dversion="1.0" -Dpackaging="jar" -DgroupId="au.gov.hic.psi.crypto" 
-     -->
-     <dependency>
-      <groupId>au.gov.hic.psi.crypto</groupId>
-      <artifactId>hic-crypto</artifactId>
-      <version>1.0</version>
-    </dependency>
      
     <!-- com.sun.xml.bind.ContextFactory required by HicOnline -->
     <dependency>
@@ -175,8 +158,8 @@
 
   <build>
       <resources>
-      <resource>
-			<directory>src/main/test</directory>
+      		<resource>
+				<directory>src/main/test</directory>
 				<includes>
 					<include>**</include>
 				</includes>
@@ -207,40 +190,6 @@
           <target>1.7</target>
           <encoding>UTF-8</encoding>
         </configuration>
-      </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-shade-plugin</artifactId>
-        <version>1.6</version>
-        <configuration>
-          <createDependencyReducedPom>true</createDependencyReducedPom>
-          <filters>
-            <filter>
-              <artifact>*:*</artifact>
-              <excludes>
-                <exclude>META-INF/*.SF</exclude>
-                <exclude>META-INF/*.DSA</exclude>
-                <exclude>META-INF/*.RSA</exclude>
-              </excludes>
-            </filter>
-          </filters>
-        </configuration>
-        <executions>
-          <execution>
-            <phase>package</phase>
-            <goals>
-              <goal>shade</goal>
-            </goals>
-            <configuration>
-              <transformers>
-                <transformer implementation="org.apache.maven.plugins.shade.resource.ServicesResourceTransformer" />
-                <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-                  <mainClass>au.com.leecare.relay.Main</mainClass>
-                </transformer>
-              </transformers>
-            </configuration>
-          </execution>
-        </executions>
       </plugin>
     </plugins>
   </build>

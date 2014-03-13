@@ -1,8 +1,8 @@
 package com.wira.client.rest;
 
-import com.duggan.workflow.server.rest.model.Request;
-import com.duggan.workflow.server.rest.model.Response;
 import com.wira.client.rest.handlers.RequestHandlerRegistry;
+import com.wira.client.rest.models.Request;
+import com.wira.client.rest.models.Response;
 
 public class WiraClientImpl implements WiraClient{
 

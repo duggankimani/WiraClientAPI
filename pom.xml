@@ -17,21 +17,9 @@
             <name>download.java.net</name>
             <url>http://download.java.net/maven/2</url>
         </repository>
-	    <repository>
-		    <id>in-project</id>
-		    <name>In Project Repo</name>
-		    <url>file://${project.basedir}/libs</url>
-		</repository>
-        
     </repositories>
     
   <dependencies>
-    <dependency>
-      <groupId>wira.rest.model</groupId>
-      <artifactId>WiraModels</artifactId>
-      <version>0.9</version>
-    </dependency>
-    
     <dependency>
       <groupId>log4j</groupId>
       <artifactId>log4j</artifactId>
@@ -186,8 +174,8 @@
         <version>2.3.2</version>
         <!-- compile for Java 1.6 -->
         <configuration>
-          <source>1.7</source>
-          <target>1.7</target>
+          <source>1.6</source>
+          <target>1.6</target>
           <encoding>UTF-8</encoding>
         </configuration>
       </plugin>

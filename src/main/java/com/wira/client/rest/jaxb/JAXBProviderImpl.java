@@ -2,13 +2,13 @@ package com.wira.client.rest.jaxb;
 
 import javax.ws.rs.ext.ContextResolver;
 
-import com.duggan.workflow.server.rest.model.BusinessKey;
-import com.duggan.workflow.server.rest.model.Detail;
-import com.duggan.workflow.server.rest.model.Request;
-import com.duggan.workflow.server.rest.model.Response;
 import com.sun.jersey.api.json.JSONJAXBContext;
 import com.wira.client.rest.exception.ExTrace;
 import com.wira.client.rest.exception.WiraExceptionModel;
+import com.wira.client.rest.models.BusinessKey;
+import com.wira.client.rest.models.Detail;
+import com.wira.client.rest.models.Request;
+import com.wira.client.rest.models.Response;
 
 public class JAXBProviderImpl implements ContextResolver<JSONJAXBContext> {
 

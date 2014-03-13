@@ -14,14 +14,14 @@ import javax.xml.bind.Marshaller;
 
 import org.junit.Test;
 
-import com.duggan.workflow.server.rest.model.BusinessKey;
-import com.duggan.workflow.server.rest.model.Detail;
-import com.duggan.workflow.server.rest.model.Request;
-import com.duggan.workflow.server.rest.model.Response;
 import com.sun.jersey.api.json.JSONJAXBContext;
 import com.sun.jersey.api.json.JSONMarshaller;
 import com.wira.client.rest.WiraClientImpl;
 import com.wira.client.rest.jaxb.JAXBProviderImpl;
+import com.wira.client.rest.models.BusinessKey;
+import com.wira.client.rest.models.Detail;
+import com.wira.client.rest.models.Request;
+import com.wira.client.rest.models.Response;
 
 public class TestWiraClient {
 
@@ -42,7 +42,7 @@ public class TestWiraClient {
 		Request request = new Request();
 		
 		//All data goes here
-		Map<String,Object> context = new HashMap<>();
+		Map<String,Object> context = new HashMap<String,Object>();
 		context.put("ServiceUri", serviceUrl);
 		context.put("docType", "INVOICE"); //mandatory
 		context.put("ownerId", ownerId); //mandatory - username of logged in user/ or document creator
@@ -53,11 +53,11 @@ public class TestWiraClient {
 		request.setContext(context);
 		
 		//Lines are created here
-		List<Detail> details = new ArrayList<>();
+		List<Detail> details = new ArrayList<Detail>();
 		double grandTotal=0.0;
 		DecimalFormat df = new DecimalFormat("#.##");      
 		for(int i=0; i<5; i++){
-			Map<String,Object> line = new HashMap<>();
+			Map<String,Object> line = new HashMap<String,Object>();
 			line.put("description", "Item#"+i);
 			
 			int qty = new Random().nextInt(10);

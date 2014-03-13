@@ -1,7 +1,5 @@
 package com.wira.client.rest.exception;
 
-import java.util.Objects;
-
 import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement

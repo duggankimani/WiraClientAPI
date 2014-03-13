@@ -1,7 +1,7 @@
 package com.wira.client.rest.handlers;
 
-import com.duggan.workflow.server.rest.model.Request;
-import com.duggan.workflow.server.rest.model.Response;
+import com.wira.client.rest.models.Request;
+import com.wira.client.rest.models.Response;
 
 public abstract class RequestHandlerDelegate {
 

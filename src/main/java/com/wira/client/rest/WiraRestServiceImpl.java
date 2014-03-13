@@ -8,10 +8,10 @@ import javax.ws.rs.core.MediaType;
 
 import org.apache.log4j.Logger;
 
-import com.duggan.workflow.server.rest.model.Request;
-import com.duggan.workflow.server.rest.model.Response;
 import com.wira.client.rest.exception.WiraExceptionModel;
 import com.wira.client.rest.exception.WiraServiceException;
+import com.wira.client.rest.models.Request;
+import com.wira.client.rest.models.Response;
 
 @Path("/wiraclient")
 @Produces(MediaType.APPLICATION_JSON)

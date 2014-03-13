@@ -10,7 +10,7 @@ public class RequestHandlerRegistry {
 
 	static Logger logger = Logger.getLogger(RequestHandlerRegistry.class);
 	
-	static Map<String,Class<?>> commandHandlers = new HashMap<>();
+	static Map<String,Class<?>> commandHandlers = new HashMap<String,Class<?>>();
 	
 	static Class<?> defaultHandler = null;
 	

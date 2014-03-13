@@ -1,4 +1,4 @@
-Prerequisites: Git, Maven. Eclipse
+Prerequisites: Git, Maven. Eclipse, JDK6 and above
 
 Clone Client
 

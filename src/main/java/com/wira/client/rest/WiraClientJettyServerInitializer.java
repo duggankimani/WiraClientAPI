@@ -42,7 +42,7 @@ public class WiraClientJettyServerInitializer {
         
         context.addServlet(servletHolder, "/*");
         server.start();
-        server.join();
+        //server.join();
 
 	}
 	
